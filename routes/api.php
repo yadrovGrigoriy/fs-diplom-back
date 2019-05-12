@@ -20,19 +20,6 @@ Route::get('getTicket', 'ClientController@getTicket');
 Route::post('updateTicket', 'ClientController@updateTicket');
 Route::get('oauth', 'AdminController@getClient');
 
- 
-
-//privat
-// Route::post('updateHall', 'AdminController@updateHall');
-// Route::post('updatePricesHall', 'AdminController@updatePricesHall');
-// Route::post('createHall', 'AdminController@createHall');
-// Route::post('deleteHall', 'AdminController@deleteHall');
-// Route::post('addFilm', 'AdminController@addFilm');
-// Route::post('updateFilm', 'AdminController@updateFilm');
-// Route::post('deleteFilm', 'AdminController@deleteFilm');
-// Route::post('addSeances', 'AdminController@addSeances');
-// Route::post('removeSeances', 'AdminController@removeSeances');
-
 
 
 // Create Dingo Router
@@ -71,6 +58,7 @@ $api->version('v1', ['middleware' => 'api'], function ($api) {
                 'message' => 'Access to protected resources granted! You are seeing this text as you provided the token correctly.',
             ]);
         });
+      
 
         $api->get('users', [
             'as' => 'users.index',
@@ -126,7 +114,9 @@ $api->version('v1', ['middleware' => 'api'], function ($api) {
          $api->post('updateFilm', [
             'as' => 'admin.updateFilm',
             'uses' => 'App\\Http\\Controllers\\AdminController@updateFilm',
-        ]);
+        ]); 
+
+       
 
         $api->post('addSeances', [
             'as' => 'admin.addSeances',
@@ -138,6 +128,12 @@ $api->version('v1', ['middleware' => 'api'], function ($api) {
             'uses' => 'App\\Http\\Controllers\\AdminController@removeSeances',
         ]);
         
+        $api->post('openSale', [
+        'as' => 'admin.openSale',
+        'uses' => 'App\\Http\\Controllers\\AdminController@openSale',
+    ]);
+        
        
     });
+    
 });

@@ -14,15 +14,15 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
     public function getAll(){   
-        $halls = DB::table('halls')
-            ->join('seances',  'halls.id', 'seances.hall_id' )
-            ->select('seances.film_id', 'halls.name', 'halls.id')
-            ->distinct()
-            ->get();
+        // $halls = DB::table('halls')
+        //     ->join('seances',  'halls.id', 'seances.hall_id' )
+        //     ->select('seances.film_id', 'halls.name', 'halls.id')
+        //     ->distinct()
+        //     ->get();
         return  [
            'films' => Film::all(),
            'halls' => Hall::all(),
-           'hallsByFilms' => $halls,
+        //    'hallsByFilms' => $halls,
            'seances' => Seance::all(),
         ];    
     }

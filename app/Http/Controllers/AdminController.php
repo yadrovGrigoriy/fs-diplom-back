@@ -70,23 +70,27 @@ class AdminController extends Controller
     }
 
     public function addSeances(Request $request){
-        $seances = json_decode($request->seances) ;
+        $seances = json_decode($request->seances);
         foreach ($seances as $seance) {
             $newSeance = new Seance();
             $newSeance->time = $seance->time;
             $newSeance->hall_id = $seance->hall_id;
             $newSeance->film_id = $seance->film_id;                    
+            $newSeance->date = $seance->date;                    
             $newSeance->save();
         }
         return ['seance' => Seance::all()];
-    }    
+    }
 
     public function removeSeances(Request $request){
-        
         $removeData = json_decode($request->removeSeances);
         foreach ($removeData as $seanceId) {
             Seance::find($seanceId)->delete();   
         }
         return ['status' => 'ok'];
+    }
+
+    public function openSale(Request $request){
+        return $request;
     }
 }

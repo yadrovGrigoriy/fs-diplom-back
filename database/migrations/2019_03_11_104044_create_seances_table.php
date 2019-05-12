@@ -18,6 +18,8 @@ class CreateSeancesTable extends Migration
             $table->string('time');
             $table->integer('film_id');
             $table->integer('hall_id');
+            $table->string('date')->nullable();
+            $table->bolean('avaliable')->default(false);
         });
     }
 

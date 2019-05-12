@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('{reactRoutes}', function () {
+    return view('index'); 
+})->where('reactRoutes', '^((?!api).)*$'); 
 
-Route::get('/', function () {
-    return view('welcome');
-});
